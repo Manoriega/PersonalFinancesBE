@@ -49,3 +49,9 @@ After that update the values from the file ./src/classes/.keys with the syntax:
 
 To run tests, after starting the server, [Click Here](http://localhost:3000/swagger)
 
+Or go to:
+
+```bash
+  http://localhost:3000/swagger
+```
+
