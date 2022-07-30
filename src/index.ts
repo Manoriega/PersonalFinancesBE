@@ -2,6 +2,11 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import cors from 'cors';
 import indexRoutes from "./routes/index-routes";
+import categoriesRoutes from "./routes/categories-routes";
+import accountsRoutes from "./routes/accounts-routes";
+import accountsTypeRoutes from "./routes/accounts-type-routes";
+import operationRoutes from "./routes/operation-routes";
+import operationTypeRoutes from "./routes/operation-type-routes";
 
 class Server {
     public app: Application;
@@ -20,7 +25,12 @@ class Server {
     }
 
     routes(): void {
-        this.app.use('/', indexRoutes)
+        this.app.use('/', indexRoutes);
+        this.app.use('/categories', categoriesRoutes); 
+        this.app.use('/accounts', accountsRoutes);
+        this.app.use('/accountstype', accountsTypeRoutes);
+        this.app.use('/operations', operationRoutes);
+        this.app.use('/operationstype', operationTypeRoutes);
     }
 
     start(): void {

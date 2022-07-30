@@ -1,8 +1,8 @@
 export default {
     database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'Nalita_803',
+        host: '',
+        user: '',
+        password: '',
         database: 'finanzaspersonales'
     }
 }

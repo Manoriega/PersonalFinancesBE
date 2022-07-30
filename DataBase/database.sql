@@ -24,7 +24,7 @@ CREATE TABLE `finanzaspersonales`.`cuenta` (
     ON UPDATE CASCADE);
 CREATE TABLE `finanzaspersonales`.`operacion` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `asunto` MEDIUMTEXT NOT NULL,
+  `asunto` MEDIUMTEXT NULL,
   `tipo` INT NOT NULL,
   `importe` FLOAT NOT NULL,
   `fecha` DATE NOT NULL,
