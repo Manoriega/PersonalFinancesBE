@@ -1,0 +1,704 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Personal Finances API",
+        "description": "This project is a REST API to provide personal finances services. It includes a CRUD system to keep track with payments and incomes for the different money accounts the user has."        
+    },
+    "tags": [
+        {
+            "name": "Account",
+            "description":"API for accounts in the system"
+        },
+        {
+            "name": "Operation",
+            "description": "API for operations in the system"
+        },
+        {
+            "name": "Category",
+            "description": "API for categories in the system"
+        },
+        {
+            "name": "Account Type",
+            "description": "API for accounts type in the system"
+        },
+        {
+            "name": "Operation Type",
+            "description": "API for operations type in the system"
+        }
+    ],
+    "paths": {
+        "/categories/select": {
+            "get": {
+                "tags": ["Category"],
+                "summary": "Get all the categories",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/create":{
+            "post": {
+                "tags": ["Category"],
+                "summary": "Create a new category",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Category we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/categories/update":{
+            "post": {
+                "tags": ["Category"],
+                "summary": "Update a category",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New category values",
+                        "schema": {
+                            "$ref": "#/definitions/CategoryUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/categories/select/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the category we want",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Category"],
+                "summary": "Get category with given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/Category"}
+                    }
+                }
+            }
+        },
+        "/categories/delete/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the category we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "summary": "Delete category with given ID",
+                "tags": ["Category"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{
+                            "$ref": "#/definitions/Id"
+                        }
+                    }
+                }
+            }
+        },     
+        "/accounts/select": {
+            "get": {
+                "tags": ["Account"],
+                "summary": "Get all the accounts",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/create":{
+            "post": {
+                "tags": ["Account"],
+                "summary": "Create a new account",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Account we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Account"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/accounts/update":{
+            "post": {
+                "tags": ["Account"],
+                "summary": "Update an account",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New account values",
+                        "schema": {
+                            "$ref": "#/definitions/AccountUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/accounts/select/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the account we want",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Account"],
+                "summary": "Get account with given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/Account"}
+                    }
+                }
+            }
+        },
+        "/accounts/delete/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the account we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "summary": "Delete account with given ID",
+                "tags": ["Account"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{
+                            "$ref": "#/definitions/Id"
+                        }
+                    }
+                }
+            }
+        },
+        "/accountstype/select": {
+            "get": {
+                "tags": ["Account Type"],
+                "summary": "Get all the account types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AccountType"
+                        }
+                    }
+                }
+            }
+        },
+        "/accountstype/create":{
+            "post": {
+                "tags": ["Account Type"],
+                "summary": "Create a new account type",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Account type we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/AccountType"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/accountstype/update":{
+            "post": {
+                "tags": ["Account Type"],
+                "summary": "Update an account type",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New account type values",
+                        "schema": {
+                            "$ref": "#/definitions/AccountTypeUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/accountstype/select/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the account type we want",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Account Type"],
+                "summary": "Get account type with given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/AccountType"}
+                    }
+                }
+            }
+        },
+        "/accountstype/delete/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the account type we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "summary": "Delete account type with given ID",
+                "tags": ["Account Type"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{
+                            "$ref": "#/definitions/Id"
+                        }
+                    }
+                }
+            }
+        },
+        "/operationstype/select": {
+            "get": {
+                "tags": ["Operation Type"],
+                "summary": "Get all the operation types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/OperationType"
+                        }
+                    }
+                }
+            }
+        },
+        "/operationstype/create":{
+            "post": {
+                "tags": ["Operation Type"],
+                "summary": "Create a new operation type",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Operation type we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/OperationType"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/operationstype/update":{
+            "post": {
+                "tags": ["Operation Type"],
+                "summary": "Update an operation type",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New operation type values",
+                        "schema": {
+                            "$ref": "#/definitions/OperationTypeUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/operationstype/select/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the operation type we want",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Operation Type"],
+                "summary": "Get operation type with given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/OperationType"}
+                    }
+                }
+            }
+        },
+        "/operationstype/delete/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the operation type we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "summary": "Delete operation type with given ID",
+                "tags": ["Operation Type"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{
+                            "$ref": "#/definitions/Id"
+                        }
+                    }
+                }
+            }
+        },
+        "/operations/select": {
+            "get": {
+                "tags": ["Operation"],
+                "summary": "Get all the operations",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Operation"
+                        }
+                    }
+                }
+            }
+        },
+        "/operations/select/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the operation we want",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Operation"],
+                "summary": "Get operation with given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/Operation"}
+                    }
+                }
+            }
+        },
+        "/operations/select/byAccount": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the account we want to know it's operations",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Operation"],
+                "summary": "Get operations from an account",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/Operation"}
+                    }
+                }
+            }
+        },
+        "/operations/select/byType": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the operation type we want to know the operations",
+                    "type": "integer"
+                }
+            ],
+            "get":{
+                "tags": ["Operation"],
+                "summary": "Get operations by the type of operation",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{"$ref": "#/definitions/Operation"}
+                    }
+                }
+            }            
+        },
+        "/operations/create":{
+            "post": {
+                "tags": ["Operation"],
+                "summary": "Create a new operation ",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Operation we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Operation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/operations/update":{
+            "post": {
+                "tags": ["Operation"],
+                "summary": "Update an operation",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New operation values",
+                        "schema": {
+                            "$ref": "#/definitions/OperationUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },        
+        "/operations/delete/byId":{
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "required": true,
+                    "description": "ID of the operation we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "summary": "Delete operation with given ID",
+                "tags": ["Operation"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema":{
+                            "$ref": "#/definitions/Id"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Id":{
+            "properties": {
+                "id": {
+                    "type":"integer"
+                }
+            }
+        },
+        "Category": {
+            "properties": {
+                "categoria": {
+                    "type": "string"
+                }
+            }
+        },
+        "CategoryUpdate": {
+            "properties": {
+                "id": {
+                    "type": "integer"                    
+                },
+                "categoria": {
+                    "type":"string"
+                }
+            }
+        },
+        "Account": {
+            "properties": {
+                "nombrecuenta": {
+                    "type": "string"
+                },
+                "tipocuenta": {
+                    "type": "integer"
+                }
+            }
+        },
+        "AccountUpdate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "nombrecuenta": {
+                    "type": "string"
+                },
+                "tipocuenta": {
+                    "type": "integer"
+                }
+            }
+        },
+        "OperationType": {
+            "properties": {
+                "operaciontipo": {
+                    "type": "string"
+                }
+            }
+        },
+        "OperationTypeUpdate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "operaciontipo": {
+                    "type": "string"
+                }
+            }
+        },
+        "AccountType": {
+            "properties": {                
+                "tipo": {
+                    "type": "string"
+                }
+            }
+        },
+        "AccountTypeUpdate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "tipo": {
+                    "type": "string"
+                }
+            }
+        },
+        "Operation": {
+            "properties": {
+                "asunto": {
+                    "type": "string"
+                },
+                "tipo":{
+                    "type": "integer"
+                },
+                "importe": {
+                    "type":"number"
+                },
+                "fecha": {
+                    "type": "string"
+                },
+                "categoria": {
+                    "type": "integer"
+                },
+                "idcuenta": {
+                    "type":"integer"
+                }
+            }
+        },
+        "OperationUpdate": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "asunto": {
+                    "type": "string"
+                },
+                "tipo":{
+                    "type": "integer"
+                },
+                "importe": {
+                    "type":"number"
+                },
+                "fecha": {
+                    "type": "string"
+                },
+                "categoria": {
+                    "type": "integer"
+                },
+                "idcuenta": {
+                    "type":"integer"
+                }
+            }
+        }
+    }
+}

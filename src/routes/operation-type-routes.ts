@@ -12,7 +12,7 @@ class OperationTypeRoutes{
         this.router.post('/update', operationtypecontrollers.updateOperationType);
         this.router.get('/select', operationtypecontrollers.getAllOperationType);
         this.router.get('/select/byId', operationtypecontrollers.getOperationType);
-        this.router.delete('/delete', operationtypecontrollers.deleteOperationType);
+        this.router.delete('/delete/byId', operationtypecontrollers.deleteOperationType);
     }
 }
 
