@@ -47,9 +47,5 @@ After that update the values from the file ./src/classes/.keys with the syntax:
 
 ## Running Tests
 
-To run tests, after starting the server go to:
-
-```bash
-  npm run test
-```
+To run tests, after starting the server, [Click Here](http://localhost:3000/swagger)
 
